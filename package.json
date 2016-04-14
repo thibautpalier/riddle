@@ -4,8 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "build": "babel src -d build",
-    "start": "babel src -d build && node build/app.js"
+    "build": "babel src -d build --source-maps",
+    "start": "babel src -d build --source-maps && node build/app.js"
   },
   "start": "start",
   "repository": {
