@@ -10,5 +10,5 @@ sauf de l’autre coté ?
 
 ## install
 
-```npm install
-```npm start
+`npm install`
+`npm start`
