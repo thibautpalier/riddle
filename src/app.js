@@ -11,10 +11,10 @@ sauf de l’autre coté ?
 */
 // jshint esversion: 6
 
-import Witch from 'model/Witch';
-import Baby from 'model/Baby';
-import Bank from 'model/Bank';
-import Boat from 'model/Boat';
+import Witch from './model/Witch';
+import Baby from './model/Baby';
+import Bank from './model/Bank';
+import Boat from './model/Boat';
 
 (function main() {
     var witchA = new Witch('WitchA');

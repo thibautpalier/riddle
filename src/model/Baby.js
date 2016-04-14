@@ -1,5 +1,5 @@
 // jshint esversion: 6
-import Person from 'Person';
+import Person from './Person';
 
 export default class Baby extends Person {
   constructor(name, mummyWitch) {

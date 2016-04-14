@@ -1,5 +1,6 @@
 // jshint esversion: 6
-import Place from 'Place';
+import Place from './Place';
+import Bank from './Bank';
 
 export default class Boat extends Place {
   constructor(name, persons, connectedPlaces) {
