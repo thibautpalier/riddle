@@ -10,6 +10,7 @@ sauf de l’autre coté ?
 
 */
 // jshint esversion: 6
+import 'source-map-support/register';
 
 import Witch from './model/Witch';
 import Baby from './model/Baby';
