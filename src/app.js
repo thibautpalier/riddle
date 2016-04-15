@@ -16,6 +16,8 @@ import Witch from './model/Witch';
 import Baby from './model/Baby';
 import Bank from './model/Bank';
 import Boat from './model/Boat';
+import RevelationTree from './model/RevelationTree';
+
 
 (function main() {
     var witchA = new Witch('WitchA');
@@ -34,15 +36,17 @@ import Boat from './model/Boat';
     bankLeft.connectPlace(boat);
     var places = [bankLeft, boat, bankRight];
 
-    babyB.moveTo(boat);
-    witchB.moveTo(boat);
-    boat.navigateTo(bankRight);
-    babyB.moveTo(bankRight);
-    boat.navigateTo(bankLeft);
-    boat.navigateTo(bankRight);
-    babyB.moveTo(boat);
-    boat.navigateTo(bankLeft);
-    babyB.moveTo(bankLeft);
+    var revelationTree = new RevelationTree([...witchs, ...babys], places);
+    revelationTree.giveMeTheSolution();
+    // babyB.moveTo(boat);
+    // witchB.moveTo(boat);
+    // boat.navigateTo(bankRight);
+    // babyB.moveTo(bankRight);
+    // boat.navigateTo(bankLeft);
+    // boat.navigateTo(bankRight);
+    // babyB.moveTo(boat);
+    // boat.navigateTo(bankLeft);
+    // babyB.moveTo(bankLeft);
 
     console.log(getModelStatusString());
 
