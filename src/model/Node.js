@@ -12,7 +12,7 @@ export default class Node {
     this.parent = parent;
     this.children = [];
 
-
+    this._moves = [...model.persons, model.places[1]];
     autoRun = autoRun ? true : autoRun;
     if(autoRun){
       exec();
@@ -20,23 +20,34 @@ export default class Node {
   }
 
   exec(resolve, reject){
-    var self = this;
-    var p1 = new Promise(self.makeAMove);
-    p1.then(nextMove).catch(stop);
+    var p1 = new Promise(makeAMove.bind(this));
+    p1.then(nextMove.bind(this)).catch(stop);
 
     function nextMove(newModel) {
-
+      var self = this;
       var promises = [];
-      for (var i = 0; i < self.persons.length; i++) {
+      for (var i = 0; i < self._moves.length; i++) {
         var newChildNode = new Node(newModel, self);
-        promises.push(new Promise(newChildNode.exec));
+        promises.push(new Promise(newChildNode.exec.bind(newChildNode)));
       }
-      Promise.all(promises).then(function(newModel){
-        resolve(newModel);
-      }).catch(function(reason) {
-        reject(reason);
-      });
 
+      for (var promise of promises) {
+        promise.then(succes).catch(error);
+      }
+
+      function succes(model) {
+        resolve(model);
+      }
+      function error(reason){
+        reject(reason);
+      }
+
+    }
+
+    function makeAMove(resolve, reject){
+      //riddle logic here with iteration
+
+      resolve(this.model);
     }
 
     function stop(reason){
@@ -44,10 +55,6 @@ export default class Node {
     }
   }
 
-  makeAMove(resolve, reject){
-    // reject(`not yet`);
-    resolve(this.model);
-  }
 
   guid() {
     function s4() {
